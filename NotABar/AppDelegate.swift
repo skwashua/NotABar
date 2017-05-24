@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Amplitude_iOS
+import AWSCore
+import AWSRekognition
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Amplitude.instance().initializeApiKey("39eaab25f09f71e90303d207f2e83d95")
+        
+        let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:7306f4fc-bc0f-4654-8c58-b008fe4c54ed")
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
         return true
     }
 

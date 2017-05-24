@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -15,11 +16,31 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func authorizedTapped(_ sender: UIButton) {
+        checkCameraAuthorization { (auth) in
+            guard auth == true else { return }
+            self.performSegue(withIdentifier: "ShowImageCapture", sender: nil)
+        }
     }
-
+    
+    func checkCameraAuthorization(_ completionHandler: @escaping ((_ authorized: Bool) -> Void)) {
+        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
+        case .authorized:
+            //The user has previously granted access to the camera.
+            completionHandler(true)
+        case .notDetermined:
+            // The user has not yet been presented with the option to grant video access so request access.
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { success in
+                completionHandler(success)
+            })
+        case .denied:
+            // The user has previously denied access.
+            completionHandler(false)
+        case .restricted:
+            // The user doesn't have the authority to request access e.g. parental restriction.
+            completionHandler(false)
+        }
+    }
 
 }
 
