@@ -25,8 +25,13 @@ class ResultViewController: UIViewController {
         
         var foundText = "Labels Found:\n"
         for (labelText, value) in results {
-            foundText += "\(labelText),\(value)\n"
+            foundText += "\(labelText) - \(value)\n"
+            
+            if ["bar", "pub"].contains(labelText.lowercased()) {
+                resultLabel.text = "It's A Bar!"
+            }
         }
+        labelsFoundLabel.text = foundText
     }
 
     @IBAction func tryAgainTapped(_ sender: UIButton) {

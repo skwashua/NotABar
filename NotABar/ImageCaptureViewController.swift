@@ -17,7 +17,13 @@ extension ImageCaptureViewController: AVCapturePhotoCaptureDelegate {
         
         let dataProvider = CGDataProvider(data: data as CFData)
         let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
-        let image = UIImage(cgImage: cgImageRef)
+        
+        let image = UIImage(cgImage: cgImageRef, scale: 0.5, orientation: UIImageOrientation.right)
+        
+        imageView.image = image
+        imageView.isHidden = false
+        previewView.isHidden = true
+        
         print("Image captured!")
 
         findLabels(image: image)
@@ -28,6 +34,7 @@ class ImageCaptureViewController: UIViewController {
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     var session: AVCaptureSession?
     var stillImageOutput: AVCapturePhotoOutput?
@@ -40,7 +47,7 @@ class ImageCaptureViewController: UIViewController {
         captureButton.layer.cornerRadius = captureButton.frame.width * 0.5
         captureButton.layer.masksToBounds = true
         captureButton.layer.borderColor = UIColor.white.cgColor
-        captureButton.layer.borderWidth = 2.0
+        captureButton.layer.borderWidth = 4.0
         
         session = AVCaptureSession()
         session?.sessionPreset = AVCaptureSessionPresetPhoto
@@ -61,7 +68,9 @@ class ImageCaptureViewController: UIViewController {
         if error == nil && session!.canAddInput(input) {
             session!.addInput(input)
             
+            let photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG, AVVideoCompressionPropertiesKey: [AVVideoQualityKey : NSNumber(value: 0.7)]])
             stillImageOutput = AVCapturePhotoOutput()
+            stillImageOutput?.setPreparedPhotoSettingsArray([photoSettings], completionHandler: nil)
             session?.addOutput(stillImageOutput)
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
@@ -69,8 +78,22 @@ class ImageCaptureViewController: UIViewController {
             videoPreviewLayer!.connection.videoOrientation = AVCaptureVideoOrientation.portrait
             previewView.layer.insertSublayer(videoPreviewLayer!, at: 0)
             
-            session!.startRunning()
+            
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        imageView.isHidden = true
+        previewView.isHidden = false
+        
+        session?.startRunning()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        session?.stopRunning()
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,6 +104,10 @@ class ImageCaptureViewController: UIViewController {
     //MARK:- IBActions
     @IBAction func captureButtonTapped(_ sender: UIButton) {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG, AVVideoCompressionPropertiesKey: [AVVideoQualityKey : NSNumber(value: 0.7)]])
+        settings.flashMode = .off
+        settings.isAutoStillImageStabilizationEnabled = true
+        
+        stillImageOutput?.connection(withMediaType: AVMediaTypeVideo)?.videoOrientation = AVCaptureVideoOrientation.portrait
         stillImageOutput?.capturePhoto(with: settings, delegate: self)
     }
     
@@ -115,10 +142,12 @@ class ImageCaptureViewController: UIViewController {
                 labels.append((label.name!, label.confidence!.floatValue))
             }
             
-            let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
-            resultVC.results = labels
-            resultVC.image = resizedImage
-            self.present(resultVC, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+                resultVC.results = labels
+                resultVC.image = resizedImage
+                self.present(resultVC, animated: true, completion: nil)
+            }
         }
     }
     
