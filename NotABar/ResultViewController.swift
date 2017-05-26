@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Amplitude_iOS
 
 class ResultViewController: UIViewController {
     
@@ -28,18 +29,24 @@ class ResultViewController: UIViewController {
             foundText += "\(labelText) - \(value)\n"
             
             if ["bar", "pub"].contains(labelText.lowercased()) {
-                resultLabel.text = "It's A Bar!"
+                Amplitude.instance().logEvent("Result_Is_Bar")
+                resultLabel.text = "A Bar!"
+            } else {
+                Amplitude.instance().logEvent("Result_Not_Bar")
+                resultLabel.text = "Not A Bar!"
             }
         }
+        
         labelsFoundLabel.text = foundText
     }
 
     @IBAction func tryAgainTapped(_ sender: UIButton) {
+        Amplitude.instance().logEvent("TryAgain_Tapped")
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func shareTapped(_ sender: UIButton) {
-        //TODO: Share!
+        Amplitude.instance().logEvent("Share_Tapped")
     }
 
 }

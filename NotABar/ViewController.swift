@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Amplitude_iOS
 
 class ViewController: UIViewController {
 
@@ -17,8 +18,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func authorizedTapped(_ sender: UIButton) {
+        Amplitude.instance().logEvent("Authorized_Tapped")
+        
         checkCameraAuthorization { (auth) in
-            guard auth == true else { return }
+            guard auth == true else {
+                //TODO: Tell them to go to Settings.
+                return
+            }
+            
             self.performSegue(withIdentifier: "ShowImageCapture", sender: nil)
         }
     }

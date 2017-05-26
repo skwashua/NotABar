@@ -9,6 +9,7 @@
 import UIKit
 import AWSRekognition
 import AVFoundation
+import Amplitude_iOS
 
 extension ImageCaptureViewController: AVCapturePhotoCaptureDelegate {
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
@@ -103,6 +104,8 @@ class ImageCaptureViewController: UIViewController {
     
     //MARK:- IBActions
     @IBAction func captureButtonTapped(_ sender: UIButton) {
+        Amplitude.instance().logEvent("CapturePhoto_Tapped")
+        
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG, AVVideoCompressionPropertiesKey: [AVVideoQualityKey : NSNumber(value: 0.7)]])
         settings.flashMode = .off
         settings.isAutoStillImageStabilizationEnabled = true
