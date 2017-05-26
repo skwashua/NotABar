@@ -41,9 +41,14 @@ class ImageCaptureViewController: UIViewController {
     var stillImageOutput: AVCapturePhotoOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK:- Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         
         captureButton.layer.cornerRadius = captureButton.frame.width * 0.5
         captureButton.layer.masksToBounds = true
@@ -105,6 +110,8 @@ class ImageCaptureViewController: UIViewController {
     //MARK:- IBActions
     @IBAction func captureButtonTapped(_ sender: UIButton) {
         Amplitude.instance().logEvent("CapturePhoto_Tapped")
+        
+        let imageCount: Int = UserDefaults.standard.integer(forKey: "ImageCount")
         
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG, AVVideoCompressionPropertiesKey: [AVVideoQualityKey : NSNumber(value: 0.7)]])
         settings.flashMode = .off

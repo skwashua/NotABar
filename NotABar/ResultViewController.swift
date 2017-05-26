@@ -18,9 +18,13 @@ class ResultViewController: UIViewController {
     
     var image: UIImage?
     var results: [(String, Float)] = []
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         
         imageView.image = image
         
@@ -47,6 +51,11 @@ class ResultViewController: UIViewController {
     
     @IBAction func shareTapped(_ sender: UIButton) {
         Amplitude.instance().logEvent("Share_Tapped")
+        
+        let shareText = "\(resultLabel.text ?? "") #NotABar #NotABarApp http://bit.ly/NotABar"
+        guard let image = image else { return }
+        let shareSheet = UIActivityViewController(activityItems: [shareText, image], applicationActivities: nil)
+        present(shareSheet, animated: true, completion: nil)
     }
 
 }

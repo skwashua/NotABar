@@ -12,9 +12,13 @@ import Amplitude_iOS
 
 class ViewController: UIViewController {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     @IBAction func authorizedTapped(_ sender: UIButton) {
