@@ -8,5 +8,6 @@ target 'NotABar' do
   # Pods for NotABar
   pod 'AWSRekognition'
   pod 'Amplitude-iOS', '~> 3.14.1'
+  pod 'Google-Mobile-Ads-SDK'
 
 end

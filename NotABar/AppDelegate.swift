@@ -10,6 +10,7 @@ import UIKit
 import Amplitude_iOS
 import AWSCore
 import AWSRekognition
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:7306f4fc-bc0f-4654-8c58-b008fe4c54ed")
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-8210450346888283~3909811651")
         
         return true
     }

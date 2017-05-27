@@ -8,16 +8,24 @@
 
 import UIKit
 import Amplitude_iOS
+import GoogleMobileAds
+
+extension ResultViewController: GADInterstitialDelegate {
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 
 class ResultViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var labelsFoundLabel: UILabel!
     
     var image: UIImage?
     var results: [(String, Float)] = []
+    var interstitial: GADInterstitial?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -42,11 +50,25 @@ class ResultViewController: UIViewController {
         }
         
         labelsFoundLabel.text = foundText
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        //Test Ad: ca-app-pub-3940256099942544/1033173712
+        //Unit Ad: ca-app-pub-8210450346888283/5386544857
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-8210450346888283/5386544857")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
     }
 
     @IBAction func tryAgainTapped(_ sender: UIButton) {
         Amplitude.instance().logEvent("TryAgain_Tapped")
-        dismiss(animated: true, completion: nil)
+        if let interstitial = interstitial, interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func shareTapped(_ sender: UIButton) {
