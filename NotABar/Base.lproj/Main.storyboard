@@ -80,10 +80,10 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CgM-wY-yfy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.12914386959999999" green="0.00026540941300000001" blue="0.16229774750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.12914386959999999" green="0.00026540941300000001" blue="0.16229774750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="D9T-hw-Y7f" secondAttribute="trailing" id="2ua-FA-emR"/>
                             <constraint firstItem="CgM-wY-yfy" firstAttribute="leading" secondItem="X7f-RF-9Yh" secondAttribute="leading" id="5Qw-EZ-Bgv"/>

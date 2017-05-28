@@ -109,9 +109,9 @@ class ImageCaptureViewController: UIViewController {
     
     //MARK:- IBActions
     @IBAction func captureButtonTapped(_ sender: UIButton) {
-        Amplitude.instance().logEvent("CapturePhoto_Tapped")
+        captureButton.isEnabled = false
         
-        let imageCount: Int = UserDefaults.standard.integer(forKey: "ImageCount")
+        Amplitude.instance().logEvent("CapturePhoto_Tapped")
         
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG, AVVideoCompressionPropertiesKey: [AVVideoQualityKey : NSNumber(value: 0.7)]])
         settings.flashMode = .off
@@ -123,6 +123,8 @@ class ImageCaptureViewController: UIViewController {
     
     //MARK:- Other Methods
     func findLabels(image: UIImage) {
+        captureButton.isEnabled = true
+        
         let client = AWSRekognition.default()
         
         guard let request = AWSRekognitionDetectLabelsRequest() else {

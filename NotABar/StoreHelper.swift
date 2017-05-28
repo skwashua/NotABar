@@ -8,9 +8,18 @@
 
 import UIKit
 
+func DebugMode() -> Bool {
+    var isDebug = false
+    
+    #if DEBUG
+        isDebug = true
+    #endif
+    
+    return isDebug
+}
+
 class StoreHelper {
     private static var takenKey = "PHOTOSTAKEN"
-    private static var photosAvailableKey = "PHOTOSAVAIL"
     
     class var takenPhotos: Int {
         get {
@@ -18,20 +27,5 @@ class StoreHelper {
         } set {
             UserDefaults.standard.set(newValue, forKey: takenKey)
         }
-    }
-    
-    class var photosAvailable: Int {
-        get {
-            if UserDefaults.standard.value(forKey: photosAvailableKey) == nil {
-                //TODO: Save this to the Keychain if it becomes an issue.
-                UserDefaults.standard.set(10, forKey: photosAvailableKey)
-            }
-            
-            return UserDefaults.standard.integer(forKey: photosAvailableKey)
-        }
-    }
-    
-    class func buyPhotos() {
-        UserDefaults.standard.set(250, forKey: photosAvailableKey)
     }
 }

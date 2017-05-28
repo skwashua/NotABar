@@ -43,6 +43,10 @@ class ResultViewController: UIViewController {
             if ["bar", "pub"].contains(labelText.lowercased()) {
                 Amplitude.instance().logEvent("Result_Is_Bar")
                 resultLabel.text = "A Bar!"
+                
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                }
             } else {
                 Amplitude.instance().logEvent("Result_Not_Bar")
                 resultLabel.text = "Not A Bar!"
@@ -50,13 +54,18 @@ class ResultViewController: UIViewController {
         }
         
         labelsFoundLabel.text = foundText
+        labelsFoundLabel.isHidden = DebugMode() == false
+        
+        StoreHelper.takenPhotos += 1
+        
         interstitial = createAndLoadInterstitial()
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
         //Test Ad: ca-app-pub-3940256099942544/1033173712
         //Unit Ad: ca-app-pub-8210450346888283/5386544857
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-8210450346888283/5386544857")
+        let adUnit = DebugMode() ? "ca-app-pub-3940256099942544/1033173712" : "ca-app-pub-8210450346888283/5386544857"
+        let interstitial = GADInterstitial(adUnitID: adUnit)
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
@@ -64,7 +73,7 @@ class ResultViewController: UIViewController {
 
     @IBAction func tryAgainTapped(_ sender: UIButton) {
         Amplitude.instance().logEvent("TryAgain_Tapped")
-        if let interstitial = interstitial, interstitial.isReady {
+        if let interstitial = interstitial, interstitial.isReady, StoreHelper.takenPhotos > 3 {
             interstitial.present(fromRootViewController: self)
         } else {
             dismiss(animated: true, completion: nil)
