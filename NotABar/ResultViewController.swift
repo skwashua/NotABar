@@ -153,9 +153,7 @@ class ResultViewController: UIViewController {
     
     @IBAction func learnMoreTapped(_ sender: Any) {
         Amplitude.instance().logEvent("LearnMore_Tapped")
-        let url = URL(string: "")!
+        let url = URL(string: "http://bit.ly/NotABarOnRantt")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    
-
 }

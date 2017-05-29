@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G8c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1Al-8w-Sgk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1Al-8w-Sgk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -261,12 +261,12 @@ Unfortunately everyone outside of the State of Utah doesn't get this luxury.  We
                                             </constraints>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yda-UG-WMW">
-                                            <rect key="frame" x="106" y="58" width="162" height="40"/>
+                                            <rect key="frame" x="109" y="58" width="156" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Ygl-Um-etq"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <state key="normal" title="Learn about Utah's Law">
+                                            <state key="normal" title="Why We Built This App">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -278,8 +278,10 @@ Unfortunately everyone outside of the State of Utah doesn't get this luxury.  We
                                         <constraint firstAttribute="bottom" secondItem="yda-UG-WMW" secondAttribute="bottom" constant="8" id="24P-uM-oA6"/>
                                         <constraint firstItem="GPo-iB-MOk" firstAttribute="bottom" secondItem="yda-UG-WMW" secondAttribute="top" id="N8S-k5-Rcq"/>
                                         <constraint firstItem="GPo-iB-MOk" firstAttribute="top" secondItem="sZy-pK-UHS" secondAttribute="top" constant="8" id="UYl-24-Gjz"/>
+                                        <constraint firstItem="yda-UG-WMW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sZy-pK-UHS" secondAttribute="leading" constant="8" id="Yb7-Y1-GYF"/>
                                         <constraint firstItem="GPo-iB-MOk" firstAttribute="leading" secondItem="sZy-pK-UHS" secondAttribute="leading" id="kTA-pU-xiW"/>
                                         <constraint firstAttribute="trailing" secondItem="GPo-iB-MOk" secondAttribute="trailing" id="lnI-rl-KoE"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yda-UG-WMW" secondAttribute="trailing" constant="8" id="y1l-at-zJA"/>
                                         <constraint firstItem="yda-UG-WMW" firstAttribute="centerX" secondItem="sZy-pK-UHS" secondAttribute="centerX" id="yfi-Nt-pyy"/>
                                     </constraints>
                                 </view>
