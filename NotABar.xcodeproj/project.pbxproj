@@ -133,7 +133,7 @@
 					03649ED51ED3DE59001F3F73 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5RAFNMF733;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -349,12 +349,15 @@
 			baseConfigurationReference = 23AE757EEBD3C412CE4F0EDA /* Pods-NotABar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5RAFNMF733;
 				INFOPLIST_FILE = NotABar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soggymop.NotABar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4e4bc1e9-37a4-451a-bba6-3317f4be387a";
+				PROVISIONING_PROFILE_SPECIFIER = "Soggymop Dev Profile";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -364,12 +367,15 @@
 			baseConfigurationReference = 2B80CA223450065EA9CFBF91 /* Pods-NotABar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 5RAFNMF733;
 				INFOPLIST_FILE = NotABar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soggymop.NotABar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00d23a19-4d32-4f34-89d5-3a496286e64f";
+				PROVISIONING_PROFILE_SPECIFIER = NotABarProductionDist;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

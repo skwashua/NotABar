@@ -13,6 +13,8 @@ import Amplitude_iOS
 
 extension ImageCaptureViewController: AVCapturePhotoCaptureDelegate {
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        captureButton.isEnabled = true
+        
         guard let buffer = photoSampleBuffer else { return }
         guard let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer) else { return }
         
@@ -27,7 +29,11 @@ extension ImageCaptureViewController: AVCapturePhotoCaptureDelegate {
         
         print("Image captured!")
 
-        findLabels(image: image)
+        DispatchQueue.main.async {
+            let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+            resultVC.image = image
+            self.present(resultVC, animated: true, completion: nil)
+        }
     }
 }
 
@@ -41,6 +47,9 @@ class ImageCaptureViewController: UIViewController {
     var stillImageOutput: AVCapturePhotoOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
+//    let debugImage: UIImage = #imageLiteral(resourceName: "bar-sample")
+//    let debugImage: UIImage = #imageLiteral(resourceName: "table-sample")
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -83,18 +92,39 @@ class ImageCaptureViewController: UIViewController {
             videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
             videoPreviewLayer!.connection.videoOrientation = AVCaptureVideoOrientation.portrait
             previewView.layer.insertSublayer(videoPreviewLayer!, at: 0)
-            
-            
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        imageView.isHidden = true
-        previewView.isHidden = false
-        
-        session?.startRunning()
+        checkCameraAuthorization { authorized in
+            guard authorized else {
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let openSettings = UIAlertAction(title: "Show Settings", style: .default, handler: { _ in
+                    let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)!
+                    UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+                })
+                
+                let alert = UIAlertController(title: "Camera Required", message: "The camera is required to take a photo.\nOpen Settings > Privacy > Camera and allow NotABar", preferredStyle: .alert)
+                alert.addAction(cancelAction)
+                alert.addAction(openSettings)
+                
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            self.imageView.isHidden = true
+            self.previewView.isHidden = false
+            
+            self.session?.startRunning()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,12 +134,20 @@ class ImageCaptureViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        videoPreviewLayer!.frame = previewView.frame
+        videoPreviewLayer?.frame = previewView.frame
     }
     
     //MARK:- IBActions
     @IBAction func captureButtonTapped(_ sender: UIButton) {
         captureButton.isEnabled = false
+        
+//        guard !DebugMode() && hasCamera == true else {
+//            let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+//            resultVC.image = debugImage
+//            
+//            self.present(resultVC, animated: true, completion: nil)
+//            return
+//        }
         
         Amplitude.instance().logEvent("CapturePhoto_Tapped")
         
@@ -121,57 +159,23 @@ class ImageCaptureViewController: UIViewController {
         stillImageOutput?.capturePhoto(with: settings, delegate: self)
     }
     
-    //MARK:- Other Methods
-    func findLabels(image: UIImage) {
-        captureButton.isEnabled = true
-        
-        let client = AWSRekognition.default()
-        
-        guard let request = AWSRekognitionDetectLabelsRequest() else {
-            print("Unable to create AWS Rek Request.")
-            return
+    func checkCameraAuthorization(_ completionHandler: @escaping ((_ authorized: Bool) -> Void)) {
+        switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
+        case .authorized:
+            //The user has previously granted access to the camera.
+            completionHandler(true)
+        case .notDetermined:
+            // The user has not yet been presented with the option to grant video access so request access.
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { success in
+                completionHandler(success)
+            })
+        case .denied:
+            // The user has previously denied access.
+            completionHandler(false)
+        case .restricted:
+            // The user doesn't have the authority to request access e.g. parental restriction.
+            completionHandler(false)
         }
-        
-        guard let requestImage = AWSRekognitionImage() else {
-            print("Unable to create AWS image.")
-            return
-        }
-        let resizedImage = resizeImage(image: image, newWidth: 400.0)
-        requestImage.bytes = UIImageJPEGRepresentation(resizedImage, 0.7)
-        request.image = requestImage
-        request.maxLabels = 8
-        request.minConfidence = 80
-        
-        client.detectLabels(request) { (labelResponse, error) in
-            guard let labelResponse = labelResponse, error == nil else {
-                print("There was an error.")
-                return
-            }
-            
-            var labels: [(String, Float)] = []
-            for label in labelResponse.labels! {
-                print("label found! \(label.name!):\(label.confidence!)")
-                labels.append((label.name!, label.confidence!.floatValue))
-            }
-            
-            DispatchQueue.main.async {
-                let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
-                resultVC.results = labels
-                resultVC.image = resizedImage
-                self.present(resultVC, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage!
     }
 
 }
