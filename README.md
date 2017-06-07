@@ -7,5 +7,8 @@ Don't put your your family at risk and avoid the potential embarrassment.
 
 Not A Bar is here to help!
 
-Learn More Here: https://rantt.com/is-it-a-bar-is-it-a-restaurant-utahs-newest-liquor-laws-are-a-sign-of-the-times-750053edb371
+Learn more about the law: http://bit.ly/NotABarGitHub
 
+3rd Party Frameworks:
+- AWS Rekognition - https://aws.amazon.com/rekognition/
+- CocoaPods - https://cocoapods.org
