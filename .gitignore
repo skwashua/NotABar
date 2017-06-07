@@ -1,0 +1,7 @@
+
+
+NotABar\.xcodeproj/xcuserdata/*
+NotABar\.xcodeproj/project\.xcworkspace/xcuserdata/
+NotABar\.xcworkspace/xcuserdata/*.xcuserdatad/xcdebugger/
+
+*.xcuserstate
