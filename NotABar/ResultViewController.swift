@@ -86,10 +86,6 @@ class ResultViewController: UIViewController {
         
         if barFound {
             resultLabel.text = "A Bar!"
-            
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-            }
         } else {
             resultLabel.text = "Not A Bar!"
         }
@@ -110,11 +106,7 @@ class ResultViewController: UIViewController {
 
     //MARK:- IBActions
     @IBAction func tryAgainTapped(_ sender: UIButton) {
-        if let interstitial = interstitial, interstitial.isReady, StoreHelper.takenPhotos > 3 {
-            interstitial.present(fromRootViewController: self)
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func shareTapped(_ sender: UIButton) {
