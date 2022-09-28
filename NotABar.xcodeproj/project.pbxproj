@@ -338,7 +338,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5RAFNMF733;
 				INFOPLIST_FILE = NotABar/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotABar;
@@ -363,7 +363,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5RAFNMF733;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = NotABar/Info.plist;
