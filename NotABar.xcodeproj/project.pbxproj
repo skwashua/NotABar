@@ -11,11 +11,17 @@
 		033807B31ED3ECFA003D7CFF /* ImageCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033807B21ED3ECFA003D7CFF /* ImageCaptureViewController.swift */; };
 		033807B51ED3EF35003D7CFF /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033807B41ED3EF35003D7CFF /* ResultViewController.swift */; };
 		03649EDA1ED3DE59001F3F73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03649ED91ED3DE59001F3F73 /* AppDelegate.swift */; };
-		03649EDC1ED3DE59001F3F73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03649EDB1ED3DE59001F3F73 /* ViewController.swift */; };
 		03649EDF1ED3DE59001F3F73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03649EDD1ED3DE59001F3F73 /* Main.storyboard */; };
-		03649EE11ED3DE59001F3F73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03649EE01ED3DE59001F3F73 /* Assets.xcassets */; };
 		03649EE41ED3DE59001F3F73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03649EE21ED3DE59001F3F73 /* LaunchScreen.storyboard */; };
-		955273A63B1E81E78A325FA7 /* Pods_NotABar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDB5864231CC3983364B72B /* Pods_NotABar.framework */; };
+		F1075F3C22259EA600C8A938 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1075F3B22259EA600C8A938 /* UtilityExtensions.swift */; };
+		F113FCA622089EFC005D2E6A /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113FCA522089EFC005D2E6A /* IntroViewController.swift */; };
+		F1381F4D221A287C00A44C26 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1381F4C221A287C00A44C26 /* InfoViewController.swift */; };
+		F1690AA8222A470A00C34A1B /* FindAResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1690AA7222A470A00C34A1B /* FindAResultViewController.swift */; };
+		F1690AAA222A47BC00C34A1B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1690AA9222A47BC00C34A1B /* MapKit.framework */; };
+		F1A343B121F68A83005E69D3 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A343B021F68A83005E69D3 /* CoreML.framework */; };
+		F1A757942223565700E13F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A757932223565700E13F2C /* Assets.xcassets */; };
+		F1A757962224516B00E13F2C /* RemoteConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A757952224516B00E13F2C /* RemoteConfigHelper.swift */; };
+		F1B624E5221E02A200AD4CCA /* NotABar30hr.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F1B624E4221E02A200AD4CCA /* NotABar30hr.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,14 +30,18 @@
 		033807B41ED3EF35003D7CFF /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		03649ED61ED3DE59001F3F73 /* NotABar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotABar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03649ED91ED3DE59001F3F73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03649EDB1ED3DE59001F3F73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03649EDE1ED3DE59001F3F73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		03649EE01ED3DE59001F3F73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03649EE31ED3DE59001F3F73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03649EE51ED3DE59001F3F73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23AE757EEBD3C412CE4F0EDA /* Pods-NotABar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotABar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotABar/Pods-NotABar.debug.xcconfig"; sourceTree = "<group>"; };
-		2B80CA223450065EA9CFBF91 /* Pods-NotABar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotABar.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotABar/Pods-NotABar.release.xcconfig"; sourceTree = "<group>"; };
-		3BDB5864231CC3983364B72B /* Pods_NotABar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotABar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1075F3B22259EA600C8A938 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
+		F113FCA522089EFC005D2E6A /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		F1381F4C221A287C00A44C26 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		F1690AA7222A470A00C34A1B /* FindAResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAResultViewController.swift; sourceTree = "<group>"; };
+		F1690AA9222A47BC00C34A1B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F1A343B021F68A83005E69D3 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		F1A757932223565700E13F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1A757952224516B00E13F2C /* RemoteConfigHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigHelper.swift; sourceTree = "<group>"; };
+		F1B624E4221E02A200AD4CCA /* NotABar30hr.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NotABar30hr.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				955273A63B1E81E78A325FA7 /* Pods_NotABar.framework in Frameworks */,
+				F1A343B121F68A83005E69D3 /* CoreML.framework in Frameworks */,
+				F1690AAA222A47BC00C34A1B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +62,6 @@
 			children = (
 				03649ED81ED3DE59001F3F73 /* NotABar */,
 				03649ED71ED3DE59001F3F73 /* Products */,
-				E8C3E01DFE0752CE230A0AB9 /* Pods */,
 				AFC95089AFC90096F5E3915A /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -67,15 +77,20 @@
 		03649ED81ED3DE59001F3F73 /* NotABar */ = {
 			isa = PBXGroup;
 			children = (
+				F1B624E4221E02A200AD4CCA /* NotABar30hr.mlmodel */,
 				03649ED91ED3DE59001F3F73 /* AppDelegate.swift */,
+				F1A757932223565700E13F2C /* Assets.xcassets */,
 				03649EDD1ED3DE59001F3F73 /* Main.storyboard */,
-				03649EE01ED3DE59001F3F73 /* Assets.xcassets */,
 				03649EE21ED3DE59001F3F73 /* LaunchScreen.storyboard */,
 				03649EE51ED3DE59001F3F73 /* Info.plist */,
-				03649EDB1ED3DE59001F3F73 /* ViewController.swift */,
 				033807B21ED3ECFA003D7CFF /* ImageCaptureViewController.swift */,
 				033807B41ED3EF35003D7CFF /* ResultViewController.swift */,
 				032B33701ED809D0003D0354 /* StoreHelper.swift */,
+				F113FCA522089EFC005D2E6A /* IntroViewController.swift */,
+				F1381F4C221A287C00A44C26 /* InfoViewController.swift */,
+				F1A757952224516B00E13F2C /* RemoteConfigHelper.swift */,
+				F1075F3B22259EA600C8A938 /* UtilityExtensions.swift */,
+				F1690AA7222A470A00C34A1B /* FindAResultViewController.swift */,
 			);
 			path = NotABar;
 			sourceTree = "<group>";
@@ -83,18 +98,10 @@
 		AFC95089AFC90096F5E3915A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3BDB5864231CC3983364B72B /* Pods_NotABar.framework */,
+				F1690AA9222A47BC00C34A1B /* MapKit.framework */,
+				F1A343B021F68A83005E69D3 /* CoreML.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E8C3E01DFE0752CE230A0AB9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				23AE757EEBD3C412CE4F0EDA /* Pods-NotABar.debug.xcconfig */,
-				2B80CA223450065EA9CFBF91 /* Pods-NotABar.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,12 +111,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03649EE81ED3DE59001F3F73 /* Build configuration list for PBXNativeTarget "NotABar" */;
 			buildPhases = (
-				20BE0ADD615EA459EBC457A7 /* [CP] Check Pods Manifest.lock */,
 				03649ED21ED3DE59001F3F73 /* Sources */,
 				03649ED31ED3DE59001F3F73 /* Frameworks */,
 				03649ED41ED3DE59001F3F73 /* Resources */,
-				1178A626D053FFBAE1FE0079 /* [CP] Embed Pods Frameworks */,
-				5032932CA1F19D52F75ED44B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,19 +131,25 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "SoggyMop LLC";
 				TargetAttributes = {
 					03649ED51ED3DE59001F3F73 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5RAFNMF733;
-						ProvisioningStyle = Manual;
+						LastSwiftMigration = "";
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
 			buildConfigurationList = 03649ED11ED3DE59001F3F73 /* Build configuration list for PBXProject "NotABar" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -161,71 +171,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				03649EE41ED3DE59001F3F73 /* LaunchScreen.storyboard in Resources */,
-				03649EE11ED3DE59001F3F73 /* Assets.xcassets in Resources */,
+				F1A757942223565700E13F2C /* Assets.xcassets in Resources */,
 				03649EDF1ED3DE59001F3F73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1178A626D053FFBAE1FE0079 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NotABar/Pods-NotABar-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		20BE0ADD615EA459EBC457A7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5032932CA1F19D52F75ED44B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NotABar/Pods-NotABar-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		03649ED21ED3DE59001F3F73 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B624E5221E02A200AD4CCA /* NotABar30hr.mlmodel in Sources */,
 				033807B31ED3ECFA003D7CFF /* ImageCaptureViewController.swift in Sources */,
-				03649EDC1ED3DE59001F3F73 /* ViewController.swift in Sources */,
+				F1075F3C22259EA600C8A938 /* UtilityExtensions.swift in Sources */,
 				03649EDA1ED3DE59001F3F73 /* AppDelegate.swift in Sources */,
 				032B33711ED809D0003D0354 /* StoreHelper.swift in Sources */,
 				033807B51ED3EF35003D7CFF /* ResultViewController.swift in Sources */,
+				F1690AA8222A470A00C34A1B /* FindAResultViewController.swift in Sources */,
+				F1A757962224516B00E13F2C /* RemoteConfigHelper.swift in Sources */,
+				F1381F4D221A287C00A44C26 /* InfoViewController.swift in Sources */,
+				F113FCA622089EFC005D2E6A /* IntroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,21 +222,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -292,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -305,21 +282,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -336,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -346,37 +333,54 @@
 		};
 		03649EE91ED3DE59001F3F73 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23AE757EEBD3C412CE4F0EDA /* Pods-NotABar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 5RAFNMF733;
 				INFOPLIST_FILE = NotABar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				INFOPLIST_KEY_CFBundleDisplayName = NotABar;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soggymop.NotABar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4e4bc1e9-37a4-451a-bba6-3317f4be387a";
-				PROVISIONING_PROFILE_SPECIFIER = "Soggymop Dev Profile";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ENABLE_BATCH_MODE = NO;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		03649EEA1ED3DE59001F3F73 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B80CA223450065EA9CFBF91 /* Pods-NotABar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 5RAFNMF733;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = NotABar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				INFOPLIST_KEY_CFBundleDisplayName = NotABar;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.soggymop.NotABar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "00d23a19-4d32-4f34-89d5-3a496286e64f";
-				PROVISIONING_PROFILE_SPECIFIER = NotABarProductionDist;
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENABLE_BATCH_MODE = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

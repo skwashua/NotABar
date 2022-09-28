@@ -1,6 +1,0 @@
-framework module Pods_NotABar {
-  umbrella header "Pods-NotABar-umbrella.h"
-
-  export *
-  module * { export * }
-}
